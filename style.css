@@ -1,81 +1,90 @@
      /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
        #map {
-        height: 100%;
+        height: 50%;
+        width: 50%;
+
       }
       /* Optional: Makes the sample page fill the window. */
-      html, body {
-        height: 100%;
-        margin: 0;
-        padding: 0;
+      table {
+        font-size: 12px;
       }
-      #description {
-        font-family: Roboto;
-        font-size: 15px;
-        font-weight: 300;
-      }
+      .foodTruck-search {
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        background: #fff;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 440px;
+        z-index: 1;
+        margin-top: 240px;
 
-      #infowindow-content .title {
-        font-weight: bold;
       }
-
-      #infowindow-content {
-        display: none;
+      #map {
+        margin-top: 240px;
+        width: 440px;
       }
+      #listing {
+        position: absolute;
+        width: 200px;
+        height: 470px;
+        overflow: auto;
+        left: 442px;
+        top: 0px;
+        cursor: pointer;
+        overflow-x: hidden;
+        margin-top: 240px;
 
-      #map #infowindow-content {
-        display: inline;
       }
-
-      .pac-card {
-        margin: 10px 10px 0 0;
-        border-radius: 2px 0 0 2px;
-        box-sizing: border-box;
-        -moz-box-sizing: border-box;
-        outline: none;
-        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-        background-color: #fff;
-        font-family: Roboto;
+      #findFoodTrucks {
+        font-size: 14px;
       }
-
-      #pac-container {
-        padding-bottom: 12px;
-        margin-right: 12px;
+      #locationField {
+        -webkit-box-flex: 1 1 190px;
+        -ms-flex: 1 1 190px;
+        flex: 1 1 190px;
+        margin: 0 8px;
       }
-
-      .pac-controls {
-        display: inline-block;
-        padding: 5px 11px;
+      #controls {
+        -webkit-box-flex: 1 1 140px;
+        -ms-flex: 1 1 140px;
+        flex: 1 1 140px;
       }
-
-      .pac-controls label {
-        font-family: Roboto;
+      #autocomplete {
+        width: 100%;
+      }
+      #country {
+        width: 100%;
+      }
+      .placeIcon {
+        width: 20px;
+        height: 34px;
+        margin: 4px;
+      }
+      .hotelIcon {
+        width: 24px;
+        height: 24px;
+      }
+      #resultsTable {
+        border-collapse: collapse;
+        width: 240px;
+      }
+      #rating {
         font-size: 13px;
-        font-weight: 300;
+        font-family: Arial Unicode MS;
       }
-
-      #pac-input {
-        background-color: #fff;
-        font-family: Roboto;
-        font-size: 15px;
-        font-weight: 300;
-        margin-left: 12px;
-        padding: 0 11px 0 13px;
-        text-overflow: ellipsis;
-        width: 400px;
+      .iw_table_row {
+        height: 18px;
       }
-
-      #pac-input:focus {
-        border-color: #4d90fe;
+      .iw_attribute_name {
+        font-weight: bold;
+        text-align: right;
       }
-
-      #title {
-        color: #fff;
-        background-color: #4d90fe;
-        font-size: 25px;
-        font-weight: 500;
-        padding: 6px 12px;
-      }
-      #target {
-        width: 345px;
+      .iw_table_icon {
+        text-align: right;
       }
