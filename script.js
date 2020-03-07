@@ -77,7 +77,7 @@ function search() {
         // Use marker animation to drop the icons incrementally on the map.
         markers[i] = new google.maps.Marker({
           position: results[i].geometry.location,
-          animation: google.maps.Animation.DROP,
+          animation: google.maps.Animation.BOUNCE,
           icon: markerIcon
         });
         // If the user clicks a food truck marker, show the details of that truck
