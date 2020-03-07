@@ -1,9 +1,12 @@
      /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
        #map {
-        height: 50%;
-        margin-top: 240px;
-        width: 440px;
+        height: 65%;
+        margin-top: 58px;
+        margin-left: 200px;
+        width: 65%;
+       
+        
       }
 
       /* Optional: Makes the sample page fill the window. */
@@ -19,24 +22,24 @@
         display: -webkit-box;
         display: -ms-flexbox;
         display: flex;
-        left: 0;
         position: absolute;
-        top: 0;
         width: 440px;
         z-index: 1;
-        margin-top: 240px;
+        margin-top: 45px;
+        margin-left: 240px;
       }
 
       #listing {
         position: absolute;
-        width: 200px;
-        height: 470px;
+        width: 240px;
+        height: 485px;
         overflow: auto;
         left: 442px;
         top: 0px;
         cursor: pointer;
         overflow-x: hidden;
-        margin-top: 240px;
+        margin-top: 125px;
+        margin-left: 703px;
       }
 
       #findFoodTrucks {
@@ -73,7 +76,7 @@
 
       #resultsTable {
         border-collapse: collapse;
-        width: 240px;
+        width: 360px;
       }
 
       #rating {
@@ -82,7 +85,7 @@
       }
 
       .truckInfo_table_row {
-        height: 18px;
+        height: 30px;
       }
 
       .truckInfo_attribute_name {
@@ -91,7 +94,9 @@
       }
       
       .truckInfo_table_icon {
-        text-align: right;
+        text-align: center;
       }
+
+
 
       

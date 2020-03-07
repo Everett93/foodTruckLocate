@@ -1,12 +1,13 @@
   <!--<body></body>-->
 
   
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
-    <meta charset="utf-8">
-    <title>Food Truck Locator</title>
+  <!DOCTYPE html>
+  <html lang="en">
+    <head>
+      <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+      <meta charset="utf-8">
+      <title>Food Truck Locator</title>
+      <link rel="stylesheet" type="text/css" href="style.css">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style>
@@ -55,70 +56,69 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 </style>
-<link rel="stylesheet" type="text/css" href="style.css">
- <script src="script.js"></script>
 
 </head>
 <body>
-<div class="sidenav">
-  <a href="https://www.facebook.com/TheBlockSA/">Most Popular</a>
-  <a href="#">Link</a>
-  <a href="#">Link</a>
-</div>
-
-<div class="content">
-  <h2>Dude, Where's My Food Truck?</h2>
-  <p>  </p>
-</div>
-
-<!-- Search for a location -->
-<div class="foodTruck-search">
-  <div id="findFoodTrucks">
-    Find Food Trucks in:
+  <div class="sidenav">
+    <a href="https://www.facebook.com/TheBlockSA/">Most Popular</a>
+    <a href="#">Link</a>
+    <a href="#">Link</a>
   </div>
-  <div id="locationField">
-    <input id="autocomplete" placeholder="Where are you? " type="text" />
+  
+  <div class="content">
+    <h2>Dude, Where's My Food Truck?</h2>
+    <p>  </p>
   </div>
-</div>
-
-<div id="map"></div>
-
-<!-- List of food trucks in the area -->
-<div id="listing">
-  <table id="resultsTable">
-    <tbody id="results"></tbody>
-  </table>
-</div>
-
-<!-- Shows information window for the truck clicked  -->
-<div style="display: none">
-  <div id="info-content">
-    <table>
-      <tr id="truckInfo-url-row" class="truckInfo_table_row">
-        <td id="truckInfo-icon" class="truckInfo_table_icon"></td>
-        <td id="truckInfo-url"></td>
-      </tr>
-      <tr id="truckInfo-address-row" class="truckInfo_table_row">
-        <td class="truckInfo_attribute_name">Address:</td>
-        <td id="truckInfo-address"></td>
-      </tr>
-      <tr id="truckInfo-phone-row" class="truckInfo_table_row">
-        <td class="truckInfo_attribute_name">Telephone:</td>
-        <td id="truckInfo-phone"></td>
-      </tr>
-      <tr id="truckInfo-rating-row" class="truckInfo_table_row">
-        <td class="truckInfo_attribute_name">Rating:</td>
-        <td id="truckInfo-rating"></td>
-      </tr>
-      <tr id="truckInfo-website-row" class="truckInfo_table_row">
-        <td class="truckInfo_attribute_name">Website:</td>
-        <td id="truckInfo-website"></td>
-      </tr>
+  
+  <!-- Search for a location -->
+  <div class="foodTruck-search">
+    <div id="findFoodTrucks">
+      Find Food Trucks in:
+    </div>
+    <div id="locationField">
+      <input id="autocomplete" placeholder="Where are you? " type="text" />
+    </div>
+  </div>
+  
+  <div class="alien"id="map"></div>
+  
+  <!-- List of food trucks in the area -->
+  <div id="listing">
+    <table id="resultsTable">
+      <tbody id="results"></tbody>
     </table>
   </div>
-</div>
-
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAfS6JT4TwvQzsV5IvKoYUrg24ah1UxvfY&libraries=places&callback=initMap"
-     async defer></script>
+  
+  <!-- Shows information window for the truck clicked  -->
+  <div style="display: none">
+    <div id="info-content">
+      <table>
+        <tr id="truckInfo-url-row" class="truckInfo_table_row">
+          <td id="truckInfo-icon" class="truckInfo_table_icon"></td>
+          <td id="truckInfo-url"></td>
+        </tr>
+        <tr id="truckInfo-address-row" class="truckInfo_table_row">
+          <td class="truckInfo_attribute_name">Address:</td>
+          <td id="truckInfo-address"></td>
+        </tr>
+        <tr id="truckInfo-phone-row" class="truckInfo_table_row">
+          <td class="truckInfo_attribute_name">Telephone:</td>
+          <td id="truckInfo-phone"></td>
+        </tr>
+        <tr id="truckInfo-rating-row" class="truckInfo_table_row">
+          <td class="truckInfo_attribute_name">Rating:</td>
+          <td id="truckInfo-rating"></td>
+        </tr>
+        <tr id="truckInfo-website-row" class="truckInfo_table_row">
+          <td class="truckInfo_attribute_name">Website:</td>
+          <td id="truckInfo-website"></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAfS6JT4TwvQzsV5IvKoYUrg24ah1UxvfY&libraries=places&callback=initMap"
+  async defer></script>
+  <script src="script.js"></script>
 </body>
 </html>
