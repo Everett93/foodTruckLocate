@@ -1,81 +1,97 @@
      /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
        #map {
-        height: 100%;
+        height: 50%;
+        margin-top: 240px;
+        width: 440px;
       }
+
       /* Optional: Makes the sample page fill the window. */
-      html, body {
-        height: 100%;
-        margin: 0;
-        padding: 0;
-      }
-      #description {
-        font-family: Roboto;
-        font-size: 15px;
-        font-weight: 300;
+      table {
+        font-size: 12px;
       }
 
-      #infowindow-content .title {
-        font-weight: bold;
+      .foodTruck-search {
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        background: #fff;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 440px;
+        z-index: 1;
+        margin-top: 240px;
       }
 
-      #infowindow-content {
-        display: none;
+      #listing {
+        position: absolute;
+        width: 200px;
+        height: 470px;
+        overflow: auto;
+        left: 442px;
+        top: 0px;
+        cursor: pointer;
+        overflow-x: hidden;
+        margin-top: 240px;
       }
 
-      #map #infowindow-content {
-        display: inline;
+      #findFoodTrucks {
+        font-size: 14px;
       }
 
-      .pac-card {
-        margin: 10px 10px 0 0;
-        border-radius: 2px 0 0 2px;
-        box-sizing: border-box;
-        -moz-box-sizing: border-box;
-        outline: none;
-        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-        background-color: #fff;
-        font-family: Roboto;
+      #locationField {
+        -webkit-box-flex: 1 1 190px;
+        -ms-flex: 1 1 190px;
+        flex: 1 1 190px;
+        margin: 0 8px;
       }
 
-      #pac-container {
-        padding-bottom: 12px;
-        margin-right: 12px;
+      #controls {
+        -webkit-box-flex: 1 1 140px;
+        -ms-flex: 1 1 140px;
+        flex: 1 1 140px;
       }
 
-      .pac-controls {
-        display: inline-block;
-        padding: 5px 11px;
+      #autocomplete {
+        width: 100%;
       }
 
-      .pac-controls label {
-        font-family: Roboto;
+      .placeIcon {
+        width: 20px;
+        height: 34px;
+        margin: 4px;
+      }
+
+      .foodTruckIcon {
+        width: 24px;
+        height: 24px;
+      }
+
+      #resultsTable {
+        border-collapse: collapse;
+        width: 240px;
+      }
+
+      #rating {
         font-size: 13px;
-        font-weight: 300;
+        font-family: Arial Unicode MS;
       }
 
-      #pac-input {
-        background-color: #fff;
-        font-family: Roboto;
-        font-size: 15px;
-        font-weight: 300;
-        margin-left: 12px;
-        padding: 0 11px 0 13px;
-        text-overflow: ellipsis;
-        width: 400px;
+      .truckInfo_table_row {
+        height: 18px;
       }
 
-      #pac-input:focus {
-        border-color: #4d90fe;
+      .truckInfo_attribute_name {
+        font-weight: bold;
+        text-align: right;
+      }
+      
+      .truckInfo_table_icon {
+        text-align: right;
       }
 
-      #title {
-        color: #fff;
-        background-color: #4d90fe;
-        font-size: 25px;
-        font-weight: 500;
-        padding: 6px 12px;
-      }
-      #target {
-        width: 345px;
-      }
+      
