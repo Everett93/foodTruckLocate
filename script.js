@@ -86,6 +86,7 @@ function search() {
         google.maps.event.addListener(markers[i], 'click', showInfoWindow);
         setTimeout(dropMarker(i), i * 100);
         addResult(results[i], i);
+        console.log(results);
       }
     }
   });
@@ -155,10 +156,11 @@ function showInfoWindow() {
 // Load the place information into the HTML elements used by the info window.
 function buildtruckInfoContent(place) {
   document.getElementById('truckInfo-icon').innerHTML = '<img class="foodTruckIcon" ' +
-      'src="' + place.icon + '"/>';
+      'src="' + place.photos[0].getUrl() + '"/>';
   document.getElementById('truckInfo-url').innerHTML = '<b><a href="' + place.url +
       '">' + place.name + '</a></b>';
   document.getElementById('truckInfo-address').textContent = place.vicinity;
+console.log(place.photos[0].getUrl());
 
   if (place.formatted_phone_number) {
     document.getElementById('truckInfo-phone-row').style.display = '';
