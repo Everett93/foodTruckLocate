@@ -2,13 +2,15 @@
        * element that contains the map. */
        #map {
         height: 50%;
-        width: 50%;
-
+        margin-top: 240px;
+        width: 440px;
       }
+
       /* Optional: Makes the sample page fill the window. */
       table {
         font-size: 12px;
       }
+
       .foodTruck-search {
         -webkit-box-align: center;
         -ms-flex-align: center;
@@ -23,12 +25,8 @@
         width: 440px;
         z-index: 1;
         margin-top: 240px;
+      }
 
-      }
-      #map {
-        margin-top: 240px;
-        width: 440px;
-      }
       #listing {
         position: absolute;
         width: 200px;
@@ -39,52 +37,61 @@
         cursor: pointer;
         overflow-x: hidden;
         margin-top: 240px;
-
       }
+
       #findFoodTrucks {
         font-size: 14px;
       }
+
       #locationField {
         -webkit-box-flex: 1 1 190px;
         -ms-flex: 1 1 190px;
         flex: 1 1 190px;
         margin: 0 8px;
       }
+
       #controls {
         -webkit-box-flex: 1 1 140px;
         -ms-flex: 1 1 140px;
         flex: 1 1 140px;
       }
+
       #autocomplete {
         width: 100%;
       }
-      #country {
-        width: 100%;
-      }
+
       .placeIcon {
         width: 20px;
         height: 34px;
         margin: 4px;
       }
-      .hotelIcon {
+
+      .foodTruckIcon {
         width: 24px;
         height: 24px;
       }
+
       #resultsTable {
         border-collapse: collapse;
         width: 240px;
       }
+
       #rating {
         font-size: 13px;
         font-family: Arial Unicode MS;
       }
-      .iw_table_row {
+
+      .truckInfo_table_row {
         height: 18px;
       }
-      .iw_attribute_name {
+
+      .truckInfo_attribute_name {
         font-weight: bold;
         text-align: right;
       }
-      .iw_table_icon {
+      
+      .truckInfo_table_icon {
         text-align: right;
       }
+
+      

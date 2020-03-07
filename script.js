@@ -11,62 +11,13 @@
 var map, places, infoWindow;
 var markers = [];
 var autocomplete;
-var countryRestrict = {'country': 'us'};
 var MARKER_PATH = 'https://developers.google.com/maps/documentation/javascript/images/marker_green';
 var hostnameRegexp = new RegExp('^https?://.+?/');
 
 var countries = {
-  'au': {
-    center: {lat: -25.3, lng: 133.8},
-    zoom: 4
-  },
-  'br': {
-    center: {lat: -14.2, lng: -51.9},
-    zoom: 3
-  },
-  'ca': {
-    center: {lat: 62, lng: -110.0},
-    zoom: 3
-  },
-  'fr': {
-    center: {lat: 46.2, lng: 2.2},
-    zoom: 5
-  },
-  'de': {
-    center: {lat: 51.2, lng: 10.4},
-    zoom: 5
-  },
-  'mx': {
-    center: {lat: 23.6, lng: -102.5},
-    zoom: 4
-  },
-  'nz': {
-    center: {lat: -40.9, lng: 174.9},
-    zoom: 5
-  },
-  'it': {
-    center: {lat: 41.9, lng: 12.6},
-    zoom: 5
-  },
-  'za': {
-    center: {lat: -30.6, lng: 22.9},
-    zoom: 5
-  },
-  'es': {
-    center: {lat: 40.5, lng: -3.7},
-    zoom: 5
-  },
-  'pt': {
-    center: {lat: 39.4, lng: -8.2},
-    zoom: 6
-  },
   'us': {
     center: {lat: 37.1, lng: -95.7},
     zoom: 3
-  },
-  'uk': {
-    center: {lat: 54.8, lng: -4.6},
-    zoom: 5
   }
 };
 
@@ -83,22 +34,15 @@ function initMap() {
   infoWindow = new google.maps.InfoWindow({
     content: document.getElementById('info-content')
   });
+  
 
   // Create the autocomplete object and associate it with the UI input control.
   // Restrict the search to the default country, and to place type "cities".
   autocomplete = new google.maps.places.Autocomplete(
       /** @type {!HTMLInputElement} */ (
-          document.getElementById('autocomplete')), {
-        types: ['(cities)'],
-        componentRestrictions: countryRestrict
-      });
+          document.getElementById('autocomplete')));
   places = new google.maps.places.PlacesService(map);
-
   autocomplete.addListener('place_changed', onPlaceChanged);
-
-  // Add a DOM event listener to react when the user selects a country.
-  document.getElementById('country').addEventListener(
-      'change', setAutocompleteCountry);
 }
 
 // When the user selects a city, get the place details for the city and
@@ -110,7 +54,7 @@ function onPlaceChanged() {
     map.setZoom(10);
     search();
   } else {
-    document.getElementById('autocomplete').placeholder = 'Enter a city';
+    document.getElementById('autocomplete').placeholder = 'Enter a location';
   }
 }
 
@@ -144,7 +88,6 @@ function search() {
         addResult(results[i], i);
       }
     }
-    console.log(results);
   });
 }
 
@@ -155,23 +98,6 @@ function clearMarkers() {
     }
   }
   markers = [];
-}
-
-// Set the country restriction based on user input.
-// Also center and zoom the map on the given country.
-function setAutocompleteCountry() {
-  var country = document.getElementById('country').value;
-  if (country == 'all') {
-    autocomplete.setComponentRestrictions({'country': []});
-    map.setCenter({lat: 15, lng: 0});
-    map.setZoom(2);
-  } else {
-    autocomplete.setComponentRestrictions({'country': country});
-    map.setCenter(countries[country].center);
-    map.setZoom(countries[country].zoom);
-  }
-  clearResults();
-  clearMarkers();
 }
 
 function dropMarker(i) {
@@ -222,24 +148,24 @@ function showInfoWindow() {
           return;
         }
         infoWindow.open(map, marker);
-        buildIWContent(place);
+        buildtruckInfoContent(place);
       });
 }
 
 // Load the place information into the HTML elements used by the info window.
-function buildIWContent(place) {
-  document.getElementById('iw-icon').innerHTML = '<img class="foodTruckIcon" ' +
+function buildtruckInfoContent(place) {
+  document.getElementById('truckInfo-icon').innerHTML = '<img class="foodTruckIcon" ' +
       'src="' + place.icon + '"/>';
-  document.getElementById('iw-url').innerHTML = '<b><a href="' + place.url +
+  document.getElementById('truckInfo-url').innerHTML = '<b><a href="' + place.url +
       '">' + place.name + '</a></b>';
-  document.getElementById('iw-address').textContent = place.vicinity;
+  document.getElementById('truckInfo-address').textContent = place.vicinity;
 
   if (place.formatted_phone_number) {
-    document.getElementById('iw-phone-row').style.display = '';
-    document.getElementById('iw-phone').textContent =
+    document.getElementById('truckInfo-phone-row').style.display = '';
+    document.getElementById('truckInfo-phone').textContent =
         place.formatted_phone_number;
   } else {
-    document.getElementById('iw-phone-row').style.display = 'none';
+    document.getElementById('truckInfo-phone-row').style.display = 'none';
   }
 
   // Assign a five-star rating to the food truck, using a black star ('&#10029;')
@@ -253,11 +179,11 @@ function buildIWContent(place) {
       } else {
         ratingHtml += '&#10029;';
       }
-    document.getElementById('iw-rating-row').style.display = '';
-    document.getElementById('iw-rating').innerHTML = ratingHtml;
+    document.getElementById('truckInfo-rating-row').style.display = '';
+    document.getElementById('truckInfo-rating').innerHTML = ratingHtml;
     }
   } else {
-    document.getElementById('iw-rating-row').style.display = 'none';
+    document.getElementById('truckInfo-rating-row').style.display = 'none';
   }
 
   // The regexp isolates the first part of the URL (domain plus subdomain)
@@ -269,9 +195,10 @@ function buildIWContent(place) {
       website = 'http://' + place.website + '/';
       fullUrl = website;
     }
-    document.getElementById('iw-website-row').style.display = '';
-    document.getElementById('iw-website').textContent = website;
+    document.getElementById('truckInfo-website-row').style.display = '';
+    document.getElementById('truckInfo-website').textContent = website;
   } else {
-    document.getElementById('iw-website-row').style.display = 'none';
+    document.getElementById('truckInfo-website-row').style.display = 'none';
   }
+
 }
