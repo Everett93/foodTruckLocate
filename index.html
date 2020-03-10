@@ -1,62 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<title>Food Truck Locator</title>
-<meta charset="utf-8">
+  <!--<body></body>-->
+
+  
+  <!DOCTYPE html>
+  <html lang="en">
+    <head>
+      <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+      <meta charset="utf-8">
+      <title>Food Truck Locator</title>
+      <link rel="stylesheet" type="text/css" href="style.css">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-* {
-  box-sizing: border-box;
-}
+<link rel="icon" href= "truckIcon.png" type="image/png" sizes="25x25">
 
-body {
-  margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-/* Style the side navigation */
-.sidenav {
-  height: 100%;
-  width: 200px;
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  left: 0;
-  background-color: rgba(218, 212, 212, 0);
-  overflow-x: hidden;
-}
-
-
-/* Side navigation links */
-.sidenav a {
-  color: rgb(8, 8, 8);
-  padding: 16px;
-  text-decoration: none;
-  display: block;
-}
-
-/* Change color on hover */
-.sidenav a:hover {
-  background-color: #ddd;
-  color: rgba(0, 0, 0, 0.966);
-}
-
-/* Style the content */
-.content {
-  margin-left: 200px;
-  padding-left: 20px;
-}
-body {
-    background-image: url("https://www.cmtran.com/wp-content/uploads/2016/11/Food-Truck-600x380.jpg");
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: cover;
-
-   
-    
-
-}
-</style>
 </head>
 <body>
 
@@ -66,10 +20,76 @@ body {
   <a href="#">Link</a>
 </div>
 
-<div class="content">
+<div class="label">
   <h2>Dude, Where's My Food Truck?</h2>
   <p>  </p>
+<div class="navbar">
+  <div class="content">
+    <h2>Dude, Where's My Food Truck?</h2>
+    <p>  </p>
+  </div>
+  <div class="dropdown">
+    <button class="dropbtn">Dropdown 
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+      <a href="https://www.facebook.com/TheBlockSA/">Most Popular</a>
+      <a href="#">Link 2</a>
+      <a href="#">Link 3</a>
+    </div>
+  </div> 
 </div>
+<body>
 
+  <!-- Search for a location -->
+  <div class="foodTruck-search">
+    <div id="findFoodTrucks">
+      Find Food Trucks in:
+    </div>
+    <div id="locationField">
+      <input id="autocomplete" placeholder="Where are you? " type="text" />
+    </div>
+  </div>
+  
+  <div class="alien"id="map"></div>
+  
+  <!-- List of food trucks in the area -->
+  <div id="listing">
+    <table id="resultsTable">
+      <tbody id="results"></tbody>
+    </table>
+  </div>
+  
+  <!-- Shows information window for the truck clicked  -->
+  <div style="display: none">
+    <div id="info-content">
+      <table>
+        <tr id="truckInfo-url-row" class="truckInfo_table_row">
+          <td id="truckInfo-icon" class="truckInfo_table_icon"></td>
+          <td id="truckInfo-url"></td>
+        </tr>
+        <tr id="truckInfo-address-row" class="truckInfo_table_row">
+          <td class="truckInfo_attribute_name">Address:</td>
+          <td id="truckInfo-address"></td>
+        </tr>
+        <tr id="truckInfo-phone-row" class="truckInfo_table_row">
+          <td class="truckInfo_attribute_name">Telephone:</td>
+          <td id="truckInfo-phone"></td>
+        </tr>
+        <tr id="truckInfo-rating-row" class="truckInfo_table_row">
+          <td class="truckInfo_attribute_name">Rating:</td>
+          <td id="truckInfo-rating"></td>
+        </tr>
+        <tr id="truckInfo-website-row" class="truckInfo_table_row">
+          <td class="truckInfo_attribute_name">Website:</td>
+          <td id="truckInfo-website"></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAfS6JT4TwvQzsV5IvKoYUrg24ah1UxvfY&libraries=places&callback=initMap"
+  async defer></script>
+  <script src="script.js"></script>
 </body>
 </html>
