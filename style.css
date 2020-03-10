@@ -1,5 +1,7 @@
      /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
+
+
        #map {
         height: 100%;
       }
@@ -83,6 +85,7 @@
         margin-top: 58px;
         margin-left: 200px;
         width: 65%;
+        position: absolute;
        
         
       }
@@ -219,7 +222,11 @@ body {
       
 /* Style the content */
 .label {
+<<<<<<< HEAD
   color: rgba(255, 255, 255, 0.733);
+=======
+  color: rgb(179, 174, 174);
+>>>>>>> master
   font-weight: bolder;
   font-size: 30px;
   text-decoration-style: solid;
@@ -230,7 +237,11 @@ body {
 
            .navbar {
             overflow: hidden;
+<<<<<<< HEAD
             background-color: rgba(101, 115, 119, 0.945);
+=======
+            background-color: rgba(77, 78, 78, 0.815);
+>>>>>>> master
           }
           
           .navbar a {
@@ -276,7 +287,11 @@ body {
           
           .dropdown-content a {
             float: none;
+<<<<<<< HEAD
             color: rgb(0, 0, 0);
+=======
+            color: rgb(19, 19, 19);
+>>>>>>> master
             padding: 12px 16px;
             text-decoration: none;
             display: block;
