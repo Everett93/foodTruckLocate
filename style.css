@@ -1,4 +1,4 @@
-     /* Always set the map height explicitly to define the size of the div
+/* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
 
 
@@ -168,11 +168,6 @@
       .truckInfo_table_row {
         height: 30px;
       }
-
-      .truckInfo_attribute_name {
-        font-weight: bold;
-        text-align: right;
-      }
       
       .truckInfo_table_icon {
         text-align: center;
@@ -305,3 +300,25 @@ body {
           .dropdown:hover .dropdown-content {
             display: block;
           }
+<<<<<<< HEAD
+=======
+
+      .foodTruckicon {
+        /* width: 100px;
+        height: 100px; */
+        /* background: red; */
+        transition: width 2s, height 2s, transform 2s;
+      }
+      
+      .foodTruckicon:hover {
+        width: 300px;
+        height: 300px;
+        transform: rotate(360deg);
+      }
+
+      th {
+        text-align: left;
+      }
+
+ 
+>>>>>>> master
