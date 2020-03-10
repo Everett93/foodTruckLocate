@@ -1,4 +1,3 @@
-
 // This example uses the autocomplete feature of the Google Places API.
 // It allows the user to find all food trucks in a given place, within a given
 // country. It then displays markers for all the food trucks returned,
@@ -14,30 +13,27 @@ var autocomplete;
 var MARKER_PATH = 'https://developers.google.com/maps/documentation/javascript/images/marker_green';
 var hostnameRegexp = new RegExp('^https?://.+?/');
 
-var countries = {
-  'us': {
-    center: {lat: 37.1, lng: -95.7},
-    zoom: 3
-  }
-};
-
 function initMap() {
   map = new google.maps.Map(document.getElementById('map'), {
-    zoom: countries['us'].zoom,
-    center: countries['us'].center,
+    center: {lat: 37.1, lng: -95.7},
+    zoom: 5,
     mapTypeControl: false,
     panControl: true,
     zoomControl: true,
     streetViewControl: true
   });
+//InfoWindow displaying "you are here"
+  myLocationBubble = new google.maps.InfoWindow;
 
+//Polulates info box for each marker
   infoWindow = new google.maps.InfoWindow({
     content: document.getElementById('info-content')
   });
-  
+
+//Calls myLocation function if nearMe button is clicked  
+document.getElementById('nearMe').addEventListener('click', myLocation);
 
   // Create the autocomplete object and associate it with the UI input control.
-  // Restrict the search to the default country, and to place type "cities".
   autocomplete = new google.maps.places.Autocomplete(
       /** @type {!HTMLInputElement} */ (
           document.getElementById('autocomplete')));
@@ -45,20 +41,55 @@ function initMap() {
   autocomplete.addListener('place_changed', onPlaceChanged);
 }
 
-// When the user selects a city, get the place details for the city and
-// zoom the map in on the city.
+//finds the users current location
+function myLocation(){
+if (navigator.geolocation) {
+  navigator.geolocation.getCurrentPosition(function(position) {
+    var pos = {
+      lat: position.coords.latitude,
+      lng: position.coords.longitude
+    };
+
+//Ceters on current location and shows pop up bubble over current location
+    myLocationBubble.setPosition(pos);
+    myLocationBubble.setContent('You are here');
+    myLocationBubble.open(map);
+    map.setCenter(pos);
+    map.setZoom(12);
+    search();
+  }, 
+//Handles errors if user's location is unavailable
+  function() {
+    handleLocationError(true, myLocationBubble, map.getCenter());
+  });
+} 
+else {
+  // Browser doesn't support Geolocation
+  handleLocationError(false, myLocationBubble, map.getCenter());
+}
+function handleLocationError(browserHasGeolocation, myLocationBubble, pos) {
+myLocationBubble.setPosition(pos);
+myLocationBubble.setContent(browserHasGeolocation ?
+                      'Error: The Geolocation service failed.' :
+                      'Error: Your browser doesn\'t support geolocation.');
+myLocationBubble.open(map);
+}
+}
+
+// When the user selects an area, address, or place, using Autocomplete, center on that area and
+// zoom the map in
 function onPlaceChanged() {
   var place = autocomplete.getPlace();
   if (place.geometry) {
     map.panTo(place.geometry.location);
-    map.setZoom(10);
+    map.setZoom(12);
     search();
   } else {
     document.getElementById('autocomplete').placeholder = 'Enter a location';
   }
 }
 
-// Search for food trucks in the selected city, within the viewport of the map.
+// Search for food trucks in the selected area, within the viewport of the map.
 function search() {
   var search = {
     bounds: map.getBounds(),
@@ -80,10 +111,10 @@ function search() {
           animation: google.maps.Animation.BOUNCE,
           icon: markerIcon
         });
-        // If the user clicks a food truck marker, show the details of that truck
-        // in an info window.
+// If the user clicks a food truck marker, show the details of that truck in an info window.
         markers[i].placeResult = results[i];
         google.maps.event.addListener(markers[i], 'click', showInfoWindow);
+//Sets interval in between each icon dropping on map
         setTimeout(dropMarker(i), i * 100);
         addResult(results[i], i);
       }
@@ -106,6 +137,7 @@ function dropMarker(i) {
   };
 }
 
+//Loads names of trucks into table next to the map
 function addResult(result, i) {
   var results = document.getElementById('results');
   var markerLetter = String.fromCharCode('A'.charCodeAt(0) + (i % 26));
@@ -154,12 +186,15 @@ function showInfoWindow() {
 
 // Load the place information into the HTML elements used by the info window.
 function buildtruckInfoContent(place) {
+//Loads an image to the info box for the selected marker
   document.getElementById('truckInfo-icon').innerHTML = '<img class="foodTruckIcon" ' +
-      'src="' + place.icon + '"/>';
+      'src="' + place.photos[0].getUrl() + '"/>';
+//Displays name of truck      
   document.getElementById('truckInfo-url').innerHTML = '<b><a href="' + place.url +
       '">' + place.name + '</a></b>';
+//Displays the trusck's address    
   document.getElementById('truckInfo-address').textContent = place.vicinity;
-
+//Displays phone number if one is listed and nothing if none
   if (place.formatted_phone_number) {
     document.getElementById('truckInfo-phone-row').style.display = '';
     document.getElementById('truckInfo-phone').textContent =
@@ -201,4 +236,21 @@ function buildtruckInfoContent(place) {
     document.getElementById('truckInfo-website-row').style.display = 'none';
   }
 
+  //Shows the times and days opened and closed
+  console.log(place.opening_hours.weekday_text);
+  if (place.opening_hours.weekday_text) {
+    document.getElementById('truckInfo-hours-row').style.display = '';
+    document.getElementById('truckInfo-hours').textContent =
+        place.opening_hours.weekday_text;
+  } else {
+    document.getElementById('truckInfo-hours-row').style.display = 'none';
+  }
+
+    //Shows a review 
+    if (place.reviews[0].text) {
+      document.getElementById('truckInfo-reviews-row').style.display = '';
+      document.getElementById('truckInfo-reviews').textContent = place.reviews[0].text;
+    } else {
+      document.getElementById('truckInfo-reviews-row').style.display = 'none';
+    }
 }
