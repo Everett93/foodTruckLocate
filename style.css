@@ -1,6 +1,11 @@
 /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
+      .center{
+        
+        padding-left: 45px;
+        margin-top: 100px;
 
+      }
 
        #map {
         height: 65%;
@@ -28,8 +33,9 @@
         position: absolute;
         width: 440px;
         z-index: 1;
-        margin-top: 45px;
-        margin-left: 240px;
+        margin-left: 200px;
+        margin-top: 36px;
+
       }
 
       #listing {
@@ -41,8 +47,8 @@
         top: 0px;
         cursor: pointer;
         overflow-x: hidden;
-        margin-top: 167px;
-        margin-left: 703px;
+        margin-top: 260px;
+        margin-left: 745px;
       }
 
       #findFoodTrucks {
@@ -80,6 +86,8 @@
       #resultsTable {
         border-collapse: collapse;
         width: 360px;
+       margin-top: 150px;
+       scroll-padding-left: 100px;
       }
 
       #rating {
@@ -139,7 +147,7 @@ body {
       
 /* Style the content */
 .label {
-  color: rgb(179, 174, 174);
+  color: greenyellow;
   font-weight: bolder;
   font-size: 30px;
   text-decoration-style: solid;
@@ -154,9 +162,9 @@ body {
           }
           
           .navbar a {
-            float: right;
+            float: left;
             font-size: 18px;
-            color: white;
+            color:black;
             text-align: center;
             padding: 14px 16px;
             text-decoration: none;
@@ -180,7 +188,7 @@ body {
           
           .navbar a:hover, .dropdown:hover .dropbtn {
             background-color: lightgray;
-            float: right;
+            float: left;
             padding-right: 45px;
           }
           
@@ -212,16 +220,17 @@ body {
           }
 
       .foodTruckicon {
-        /* width: 100px;
-        height: 100px; */
-        /* background: red; */
+         width: 100px;
+        height: 100px; 
+         background: red; 
         transition: width 2s, height 2s, transform 2s;
       }
       
-      .foodTruckicon:hover {
+      .foodTruckIcon:hover {
         width: 300px;
         height: 300px;
         transform: rotate(360deg);
+       
       }
 
       th {
